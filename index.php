@@ -1,238 +1,140 @@
-<?php
-require_once __DIR__ . '/helpers.php';
-
-/** @var array $courses */
-$courses = [
-    ['code' => 'WEB-01', 'name' => 'Web Dasar', 'fee' => 200000, 'quota' => 30, 'registered' => 12, 'start_date' => '2026-09-21'],
-    ['code' => 'PHP-01', 'name' => 'PHP Dasar', 'fee' => 250000, 'quota' => 30, 'registered' => 18, 'start_date' => '2026-09-22'],
-    ['code' => 'PHP-02', 'name' => 'PHP Lanjutan', 'fee' => 300000, 'quota' => 25, 'registered' => 24, 'start_date' => '2026-09-24'],
-    ['code' => 'LAR-01', 'name' => 'Laravel Fundamental', 'fee' => 350000, 'quota' => 25, 'registered' => 25, 'start_date' => '2026-09-28'],
-    ['code' => 'DB-01', 'name' => 'MySQL Dasar', 'fee' => 275000, 'quota' => 20, 'registered' => 0, 'start_date' => '2026-10-01'],
-    ['code' => 'UI-01', 'name' => 'UI Web Dasar', 'fee' => 225000, 'quota' => 35, 'registered' => 9, 'start_date' => '2026-10-03'],
-];
-
-$siteName = "KursusKu";
-$tagline = "Belajar Teknologi, Bangun Masa Depan";
-$tahun = date("Y");
-
-?>
-
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-  <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0">
+    <title>KursusKu</title>
 
-  <title><?php echo $siteName; ?></title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-  <link
-    rel="stylesheet"
-    href="assets/css/style.css">
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #fff;
+            color: #333;
+        }
+
+        /* HEADER */
+        .header {
+            background: linear-gradient(135deg, #d41445, #e52d5b);
+            color: white;
+            text-align: center;
+            padding: 25px 20px 20px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 30px;
+        }
+
+        .header p {
+            margin: 6px 0 0;
+            font-size: 14px;
+        }
+
+        /* NAVIGASI */
+        .nav {
+            background: #b91543;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            padding: 10px;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* KONTEN */
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: 30px auto;
+        }
+
+        .hero {
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            color: #666;
+        }
+
+        .hero img {
+            width: 100%;
+            max-width: 700px;
+            height: auto;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+
+            .header h1 {
+                font-size: 26px;
+            }
+
+            .nav {
+                gap: 15px;
+            }
+
+            .nav a {
+                font-size: 13px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-  <header class="header">
 
-    <div class="container">
+    <!-- HEADER -->
+    <header class="header">
+        <h1>KursusKu</h1>
+        <p>Belajar Teknologi, Bangun Masa Depan</p>
+    </header>
 
-      <h1>
-        <?php echo $siteName; ?>
-      </h1>
+    <!-- NAVIGASI -->
+    <nav class="nav">
+        <a href="index.php">Beranda</a>
+        <a href="catalog.php">Katalog</a>
+        <a href="registration.php">Daftar Kursus</a>
+    </nav>
 
-      <p>
-        <?php echo $tagline; ?>
-      </p>
+    <!-- KONTEN -->
+    <main class="container">
 
-    </div>
+        <section class="hero">
 
-  </header>
-
-  <nav class="navbar">
-
-    <div class="container">
-
-      <a href="#beranda">Beranda</a>
-
-      <a href="#kursus">Kursus</a>
-
-      <a href="#tentang">Tentang</a>
-
-      <a href="#kontak">Kontak</a>
-
-    </div>
-
-  </nav>
-
-  <main>
-    <section id="beranda" class="hero">
-
-      <div class="container">
-
-        <div class="hero-content">
-
-          <div>
-
-            <h2>
-              Selamat Datang di
-              <?php echo $siteName; ?>
-            </h2>
+            <h2>Selamat Datang di KursusKu</h2>
 
             <p>
-              Platform belajar teknologi untuk
-              mahasiswa yang ingin meningkatkan
-              kemampuan pemrograman web.
+                Temukan kursus teknologi yang sesuai dengan kebutuhan Anda.
             </p>
 
-            <a
-              href="#kursus"
-              class="button">
-              Lihat Kursus
-            </a>
+            <!-- Jika mempunyai gambar, ubah nama file di bawah -->
+            <img src="assets/img/gambar mahasiswa belajar coding.png" alt="KursusKu">
 
-              <a
-                href="fee-calculator.php"
-                class="button">Lihat Estimasi Biaya
-              </a>
+        </section>
 
-          </div>
+    </main>
 
-          <div>
-
-            <img
-              src="assets/img/image1.png"
-              alt="Mahasiswa sedang belajar pemrograman web"
-              class="hero-image">
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- ===== SECTION KATALOG — DIGANTI DENGAN TABEL DINAMIS ===== -->
-    <section id="kursus" class="section">
-
-      <div class="container">
-
-        <h2>Katalog Kursus</h2>
-
-        <table>
-          <thead>
-            <tr>
-              <th>Kode</th>
-              <th>Nama</th>
-              <th>Biaya</th>
-              <th>Mulai</th>
-              <th>Sisa</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php foreach ($courses as $course): ?>
-              <?php
-              $status = statusKursus($course['quota'], $course['registered']);
-              $statusClass = $status === 'Penuh' ? 'badge-full' : 'badge-available';
-              ?>
-              <tr>
-                <td><?= htmlspecialchars($course['code']) ?></td>
-                <td><?= htmlspecialchars(trim($course['name'])) ?></td>
-                <td><?= rupiah($course['fee']) ?></td>
-                <td><?= formatTanggal($course['start_date']) ?></td>
-                <td><?= sisaKursi($course['quota'], $course['registered']) ?></td>
-                <td><span class="<?= $statusClass ?>"><?= $status ?></span></td>
-              </tr>
-            <?php endforeach; ?>
-          </tbody>
-        </table>
-
-      </div>
-
-    </section>
-    <!-- ===== AKHIR SECTION KATALOG ===== -->
-
-    <section id="tentang" class="section section-light">
-
-      <div class="container">
-
-        <h2>Tentang KursusKu</h2>
-
-        <p>
-          KursusKu merupakan prototype website
-          pembelajaran yang dikembangkan dalam
-          mata kuliah Pemrograman Web III.
-        </p>
-
-        <p>
-          Pada semester ini mahasiswa akan belajar
-          PHP, MySQL dan framework Laravel.
-        </p>
-
-        <a
-          href="https://laravel.com"
-          target="_blank"
-          rel="noopener">
-          Pelajari Laravel
-        </a>
-
-      </div>
-
-    </section>
-    <section class="section">
-
-      <div class="container">
-
-        <h2>Video Pembelajaran</h2>
-
-        <div class="video-placeholder">
-
-          <iframe width="342" height="607" src="https://www.youtube.com/embed/nQinn48Bk2g" title="Kenapa Laravel Masih Banyak Yang Pake" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-
-
-      </div>
-
-    </section>
-    <section id="kontak" class="section section-light">
-
-      <div class="container">
-
-        <h2>Kontak</h2>
-
-        <p>
-          Informasi lebih lanjut mengenai
-          program KursusKu dapat diperoleh
-          melalui halaman ini.
-        </p>
-
-      </div>
-
-    </section>
-  </main>
-
-  <footer class="footer">
-
-    <div class="container">
-
-      <p>
-
-        &copy;
-        <?php echo $tahun; ?>
-
-        <?php echo $siteName; ?>.
-
-        Pemrograman Web III.
-
-      </p>
-
-    </div>
-
-  </footer>
 </body>
-
 </html>

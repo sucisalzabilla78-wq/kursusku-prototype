@@ -1,86 +1,363 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Daftar Kursus - KursusKu</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran Kursus - KursusKu</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Georgia, "Times New Roman", serif;
+            background: #ffffff;
+            color: #222;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 800px;
+            margin: 30px auto;
+        }
+
+        .menu {
+            margin-bottom: 20px;
+        }
+
+        .menu a {
+            color: #0645ad;
+            text-decoration: underline;
+            margin-right: 5px;
+        }
+
+        .judul-kecil {
+            color: #b05a70;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        h1 {
+            font-size: 30px;
+            margin: 0 0 12px 0;
+        }
+
+        .deskripsi {
+            margin-bottom: 25px;
+        }
+
+        .form-box {
+            border: 1px solid #d5d5d5;
+            border-radius: 15px;
+            padding: 25px;
+        }
+
+        .row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 18px;
+        }
+
+        .form-group {
+            flex: 1;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 7px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 11px 13px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 14px;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #999;
+        }
+
+        .full-width {
+            margin-bottom: 18px;
+        }
+
+        fieldset {
+            border: 1px solid #ccc;
+            margin: 0 0 18px 0;
+            padding: 10px 15px 15px 15px;
+        }
+
+        legend {
+            font-weight: bold;
+            padding: 0 5px;
+        }
+
+        .radio-group,
+        .checkbox-group {
+            display: flex;
+            gap: 25px;
+        }
+
+        .radio-group label,
+        .checkbox-group label {
+            font-weight: normal;
+            display: inline;
+            margin-left: 3px;
+        }
+
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .button {
+            margin-top: 5px;
+        }
+
+        button {
+            padding: 10px 25px;
+            border: none;
+            border-radius: 8px;
+            background: #b05a70;
+            color: white;
+            font-family: Georgia, "Times New Roman", serif;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #93485b;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 92%;
+            }
+
+            .row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+    </style>
 </head>
+
 <body>
-<header class="site-header">
-  <div class="container nav-wrap">
-    <a class="brand" href="index.php">KursusKu</a>
-    <nav aria-label="Navigasi utama">
-      <a href="index.php">Beranda</a>
-      <a href="index.php#katalog">Katalog</a>
-      <a href="registration.php">Daftar</a>
-    </nav>
-  </div>
-</header>
-<main class="container">
-  <section class="page-intro">
-    <p class="eyebrow">Pendaftaran Kursus</p>
+
+<div class="container">
+
+    <!-- Menu -->
+    <div class="menu">
+        <a href="index.php">KursusKu</a><br>
+        <a href="index.php">Beranda</a>
+        <a href="catalog.php">Katalog</a>
+        <a href="registration.php">Daftar</a>
+    </div>
+
+    <!-- Judul -->
+    <div class="judul-kecil">
+        PENDAFTARAN KURSUS
+    </div>
+
     <h1>Mulai belajar bersama KursusKu</h1>
-    <p>Gunakan data latihan. Field bertanda wajib harus diisi.</p>
-  </section>
-  <section class="form-card">
-    <form action="process-registration.php" method="POST" class="registration-form">
-      <input type="hidden" name="source" value="week-05">
-      <div class="form-grid">
-        <div class="form-group">
-          <label for="name">Nama Lengkap</label>
-          <input id="name" name="name" type="text" minlength="3" maxlength="100" autocomplete="name" required>
+
+    <p class="deskripsi">
+        Gunakan data latihan. Field bertanda wajib harus diisi.
+    </p>
+
+    <!-- Form -->
+    <form action="process-registration.php" method="POST">
+
+        <div class="form-box">
+
+            <!-- Nama & Email -->
+            <div class="row">
+
+                <div class="form-group">
+                    <label for="nama">Nama Lengkap</label>
+                    <input
+                        type="text"
+                        id="nama"
+                        name="nama"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                    >
+                </div>
+
+            </div>
+
+            <!-- Nomor HP & Program Studi -->
+            <div class="row">
+
+                <div class="form-group">
+                    <label for="no_hp">Nomor HP</label>
+                    <input
+                        type="text"
+                        id="no_hp"
+                        name="no_hp"
+                        placeholder="Contoh: 081234567890"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="prodi">Program Studi</label>
+                    <input
+                        type="text"
+                        id="prodi"
+                        name="prodi"
+                        required
+                    >
+                </div>
+
+            </div>
+
+            <!-- Kursus -->
+            <div class="full-width">
+
+                <label for="kursus">Kursus yang Dipilih</label>
+
+                <select id="kursus" name="kursus" required>
+
+                    <option value="">
+                        -- Pilih kursus --
+                    </option>
+
+                    <option value="UI/UX">
+                        UI/UX
+                    </option>
+
+                    <option value="Database">
+                        Database
+                    </option>
+
+                    <option value="Backend">
+                        Backend
+                    </option>
+
+                </select>
+
+            </div>
+
+            <!-- Jenis Peserta -->
+            <fieldset>
+
+                <legend>Jenis Peserta</legend>
+
+                <div class="radio-group">
+
+                    <div>
+                        <input
+                            type="radio"
+                            id="mahasiswa"
+                            name="jenis_peserta"
+                            value="Mahasiswa"
+                            required
+                        >
+                        <label for="mahasiswa">Mahasiswa</label>
+                    </div>
+
+                    <div>
+                        <input
+                            type="radio"
+                            id="umum"
+                            name="jenis_peserta"
+                            value="Umum"
+                        >
+                        <label for="umum">Umum</label>
+                    </div>
+
+                </div>
+
+            </fieldset>
+
+            <!-- Minat Tambahan -->
+            <fieldset>
+
+                <legend>Minat Tambahan</legend>
+
+                <div class="checkbox-group">
+
+                    <div>
+                        <input
+                            type="checkbox"
+                            id="uiux"
+                            name="minat[]"
+                            value="UI/UX"
+                        >
+                        <label for="uiux">UI/UX</label>
+                    </div>
+
+                    <div>
+                        <input
+                            type="checkbox"
+                            id="database"
+                            name="minat[]"
+                            value="Database"
+                        >
+                        <label for="database">Database</label>
+                    </div>
+
+                    <div>
+                        <input
+                            type="checkbox"
+                            id="backend"
+                            name="minat[]"
+                            value="Backend"
+                        >
+                        <label for="backend">Backend</label>
+                    </div>
+
+                </div>
+
+            </fieldset>
+
+            <!-- Catatan -->
+            <div class="full-width">
+
+                <label for="catatan">Catatan</label>
+
+                <textarea
+                    id="catatan"
+                    name="catatan"
+                    placeholder="Tuliskan catatan jika ada..."
+                ></textarea>
+
+            </div>
+
+            <!-- Tombol -->
+            <div class="button">
+                <button type="submit">
+                    Daftar Kursus
+                </button>
+            </div>
+
         </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" maxlength="120" autocomplete="email" required>
-        </div>
-        <div class="form-group">
-          <label for="phone">Nomor HP</label>
-          <input id="phone" name="phone" type="tel" maxlength="15" autocomplete="tel" placeholder="Contoh: 081234567890" required>
-        </div>
-        <div class="form-group">
-          <label for="study_program">Program Studi</label>
-          <input id="study_program" name="study_program" type="text" maxlength="100" required>
-        </div>
-      </div>
 
-      <div class="form-group">
-        <label for="course">Kursus yang Dipilih</label>
-        <select id="course" name="course" required>
-          <option value="">-- Pilih kursus --</option>
-          <option value="web-dasar">Web Dasar</option>
-          <option value="php-dasar">PHP Dasar</option>
-          <option value="laravel-fundamental">Laravel Fundamental</option>
-        </select>
-      </div>
-
-      <fieldset class="form-group">
-        <legend>Jenis Peserta</legend>
-        <label class="choice">
-          <input type="radio" name="participant_type" value="mahasiswa" required> Mahasiswa
-        </label>
-        <label class="choice">
-          <input type="radio" name="participant_type" value="umum"> Umum
-        </label>
-      </fieldset>
-
-      <fieldset class="form-group">
-        <legend>Minat Tambahan</legend>
-        <label class="choice"><input type="checkbox" name="interests[]" value="ui-ux"> UI/UX</label>
-        <label class="choice"><input type="checkbox" name="interests[]" value="database"> Database</label>
-        <label class="choice"><input type="checkbox" name="interests[]" value="backend"> Backend</label>
-      </fieldset>
-
-      <div class="form-group">
-        <label for="note">Catatan</label>
-        <textarea id="note" name="note" rows="5" maxlength="300" placeholder="Tuliskan kebutuhan belajar Anda (opsional)"></textarea>
-        <small class="help">Maksimal 300 karakter.</small>
-      </div>
-
-      <button class="btn-primary" type="submit">Kirim Pendaftaran</button>
     </form>
-  </section>
-</main>
+
+</div>
+
 </body>
 </html>

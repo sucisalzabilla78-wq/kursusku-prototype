@@ -1,0 +1,26 @@
+PERBANDINGAN LOCAL VS HOSTING - KursusKu
+Pertemuan 5 - Pemrograman Web III
+
+==============================================================
+
+| Aspek       | Local Development       | Hosting / Production       |
+|-------------|-------------------------|-----------------------------|
+| URL         | localhost:8080         | Domain publik               |
+| Lokasi file | Laptop mahasiswa       | Server hosting              |
+| Database    | MySQL lokal             | Database server              |
+| Environment | Development             | Production                  |
+| HTTPS       | Tidak selalu tersedia   | Seharusnya aktif             |
+| Debug       | Boleh aktif             | Sebaiknya dimatikan          |
+| Secret      | Disimpan lokal          | Disimpan aman                |
+| Akses       | Hanya lokal             | Melalui internet             |
+| Kecepatan   | Cepat                   | Tergantung server            |
+| Biaya       | Gratis                  | Berbayar                     |
+| Backup      | Manual                  | Otomatis/terjadwal            |
+
+==============================================================
+
+CATATAN PENTING:
+
+1. Local digunakan untuk proses pengembangan dan pengujian.
+2. Hosting digunakan agar website dapat diakses melalui internet.
+3. Data atau password penting tidak boleh ditampilkan kepada pengguna.
