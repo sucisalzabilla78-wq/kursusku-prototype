@@ -1,0 +1,13 @@
+Pertemuan 6 - Test Matrix
+01 Mahasiswa + Web Dasar + 1 paket => Rp 240.000 : PASS
+02 Mahasiswa + PHP Dasar + 1 paket => Rp 340.000 : PASS
+03 Umum + Laravel Dasar + 1 paket => Rp 500.000 : PASS
+04 Mahasiswa + Web Dasar + 2 paket => Rp 480.000 : PASS
+05 Nama kosong => pesan nama wajib diisi : PASS
+06 Email tidak valid => pesan email tidak valid : PASS
+07 Tidak memilih minat => Belum memilih minat, tanpa warning : PASS
+08 Pilih 3 minat => UI/UX, Database, Backend tampil : PASS
+09 Nomor HP kosong => Nomor HP wajib diisi : PASS
+10 Program studi kosong => Program studi wajib diisi : PASS
+11 Form dikirim dengan POST => Data pendaftaran berhasil diproses : PASS
+12 Tambah data pendaftaran => Data tampil di history melalui foreach : PASS
