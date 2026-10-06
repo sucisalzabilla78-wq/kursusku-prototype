@@ -1,0 +1,56 @@
+KursusKu Pertemuan 2-6 - Validation Results
+Generated: 2026-10-06
+
+[1] PHP syntax check
+
+PASS | index.php
+PASS | registration.php
+PASS | process-registration.php
+PASS | process.php
+PASS | register.php
+PASS | history.php
+PASS | test-matrix.php
+PASS | server-time.php
+PASS | fee-calculator.php
+PASS | get-demo.php
+PASS | hello.php
+PASS | helpers.php
+PASS | data.php
+PASS | loop-lab.php
+
+[2] Form validation
+
+PASS | Nama wajib diisi
+PASS | Email wajib diisi
+PASS | Email harus valid
+PASS | Nomor HP wajib diisi
+PASS | Program Studi wajib diisi
+PASS | Kursus wajib dipilih
+PASS | Jenis peserta wajib dipilih
+
+[3] POST processing
+
+PASS | Form menggunakan method POST
+PASS | Data pendaftaran berhasil diproses
+PASS | Checkbox minat kosong tidak menghasilkan warning
+PASS | Data minat dapat diproses sebagai array
+
+[4] Looping
+
+PASS | Data kursus ditampilkan menggunakan foreach
+PASS | Data minat ditampilkan menggunakan foreach
+PASS | Data history ditampilkan menggunakan foreach
+
+[5] Test Matrix
+
+PASS | Mahasiswa + Web Dasar + 1 paket
+PASS | Mahasiswa + PHP Dasar + 1 paket
+PASS | Umum + Laravel Dasar + 1 paket
+PASS | Nama kosong
+PASS | Email tidak valid
+PASS | Tidak memilih minat
+PASS | Pilih 3 minat
+PASS | Metode offline
+PASS | Metode hybrid
+
+Status: ALL TESTS PASSED
