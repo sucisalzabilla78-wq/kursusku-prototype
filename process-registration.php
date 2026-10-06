@@ -1,167 +1,161 @@
+<?php
 
-<!DOCTYPE html>
+declare(strict_types=1);
+
+$name = $_POST['name'] ?? '';
+$email = $_POST['email'] ?? '';
+$course = $_POST['course'] ?? '';
+$participantType = $_POST['participant_type'] ?? '';
+$interests = $_POST['interests'] ?? [];
+
+$courseNames = [
+    'web-dasar' => 'Web Dasar',
+    'php-dasar' => 'PHP Dasar',
+    'laravel-fundamental' => 'Laravel Fundamental'
+];
+
+$courseName = $courseNames[$course] ?? $course;
+
+$interestNames = [];
+
+foreach ($interests as $interest) {
+    $interestNames[] = match ($interest) {
+        'ui-ux' => 'UI/UX',
+        'database' => 'Database',
+        'backend' => 'Backend',
+        default => $interest
+    };
+}
+
+$price = match ($course) {
+    'web-dasar' => 300000,
+    'php-dasar' => 350000,
+    'laravel-fundamental' => 500000,
+    default => 0
+};
+
+$subtotal = $price;
+$discount = $subtotal * 0.20;
+$total = $subtotal - $discount;
+
+function rupiah(float $number): string
+{
+    return 'Rp ' . number_format($number, 0, ',', '.');
+}
+
+?>
+
+<!doctype html>
 <html lang="id">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hasil Pendaftaran - KursusKu</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+    <title>Pendaftaran Berhasil - KursusKu</title>
 
-        body {
-            margin: 0;
-            font-family: Georgia, "Times New Roman", serif;
-            background: #fff;
-            color: #222;
-        }
-
-        .container {
-            width: 80%;
-            max-width: 800px;
-            margin: 40px auto;
-        }
-
-        .hasil-header {
-            background: #f8e5ef;
-            border-left: 5px solid #d14b8f;
-            padding: 25px;
-            margin-bottom: 20px;
-        }
-
-        .hasil-header h1 {
-            margin: 0 0 10px;
-            font-size: 30px;
-        }
-
-        .hasil-header p {
-            margin: 0;
-        }
-
-        .hasil-box {
-            border: 1px solid #ddd;
-            border-radius: 12px;
-            padding: 30px;
-        }
-
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .data-table td {
-            padding: 5px 0;
-            vertical-align: top;
-        }
-
-        .data-table td:first-child {
-            width: 150px;
-            font-weight: bold;
-        }
-
-        .btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 18px;
-            background: #d14b8f;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-        }
-
-        .btn:hover {
-            background: #b83d78;
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                width: 92%;
-            }
-
-            .hasil-header h1 {
-                font-size: 25px;
-            }
-
-            .hasil-box {
-                padding: 20px;
-            }
-
-            .data-table td:first-child {
-                width: 120px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
-<body>
+<body class="utility-page">
 
-<div class="container">
+<main class="utility-card">
 
-    <div class="hasil-header">
-        <h1>Pendaftaran Diterima untuk Diproses</h1>
-        <p>Periksa kembali data latihan berikut.</p>
+    <span class="eyebrow">
+        MILESTONE 6 · RINGKASAN
+    </span>
+
+    <h1>
+        Pendaftaran Berhasil Diproses
+    </h1>
+
+    <div class="summary-grid">
+
+        <div class="summary-box">
+            <strong>Nama:</strong>
+            <span><?= htmlspecialchars($name) ?></span>
+        </div>
+
+        <div class="summary-box">
+            <strong>Email:</strong>
+            <span><?= htmlspecialchars($email) ?></span>
+        </div>
+
+        <div class="summary-box">
+            <strong>Kursus:</strong>
+            <span><?= htmlspecialchars($courseName) ?></span>
+        </div>
+
+        <div class="summary-box">
+            <strong>Tipe peserta:</strong>
+            <span><?= htmlspecialchars($participantType) ?></span>
+        </div>
+
+        <div class="summary-box">
+            <strong>Metode:</strong>
+            <span>Tatap Muka</span>
+        </div>
+
+        <div class="summary-box">
+            <strong>Jumlah paket:</strong>
+            <span>1</span>
+        </div>
+
     </div>
 
-    <div class="hasil-box">
+    <h2>Rincian Biaya</h2>
 
-        <table class="data-table">
+    <div class="price-box">
 
-            <tr>
-                <td>Nama</td>
-                <td><?= htmlspecialchars($_POST['nama'] ?? '') ?></td>
-            </tr>
+        <div>
+            <span>Biaya satuan</span>
+            <strong><?= rupiah($price) ?></strong>
+        </div>
 
-            <tr>
-                <td>Email</td>
-                <td><?= htmlspecialchars($_POST['email'] ?? '') ?></td>
-            </tr>
+        <div>
+            <span>Subtotal</span>
+            <strong><?= rupiah($subtotal) ?></strong>
+        </div>
 
-            <tr>
-                <td>Nomor HP</td>
-                <td><?= htmlspecialchars($_POST['no_hp'] ?? '') ?></td>
-            </tr>
+        <div>
+            <span>Diskon 20%</span>
+            <strong>-<?= rupiah($discount) ?></strong>
+        </div>
 
-            <tr>
-                <td>Program Studi</td>
-                <td><?= htmlspecialchars($_POST['prodi'] ?? '') ?></td>
-            </tr>
+        <div class="total">
+            <span>TOTAL AKHIR</span>
+            <strong><?= rupiah($total) ?></strong>
+        </div>
 
-            <tr>
-                <td>Kursus</td>
-                <td><?= htmlspecialchars($_POST['kursus'] ?? '') ?></td>
-            </tr>
+    </div>
 
-            <tr>
-                <td>Jenis Peserta</td>
-                <td><?= htmlspecialchars($_POST['jenis_peserta'] ?? '') ?></td>
-            </tr>
+    <h2>Minat</h2>
 
-            <tr>
-                <td>Minat</td>
-                <td>
-                    <?= isset($_POST['minat'])
-                        ? htmlspecialchars(implode(', ', $_POST['minat']))
-                        : ''
-                    ?>
-                </td>
-            </tr>
+    <div class="interest-box">
+        <?php if (!empty($interestNames)): ?>
 
-            <tr>
-                <td>Catatan</td>
-                <td><?= htmlspecialchars($_POST['catatan'] ?? '') ?></td>
-            </tr>
+            <?php foreach ($interestNames as $interest): ?>
+                <span><?= htmlspecialchars($interest) ?></span>
+            <?php endforeach; ?>
 
-        </table>
+        <?php else: ?>
 
-        <a href="registration.php" class="btn">
+            <span>Tidak ada minat tambahan</span>
+
+        <?php endif; ?>
+    </div>
+
+    <div class="button-row">
+        <a href="registration.php" class="button">
             Kembali ke Form
         </a>
 
+        <a href="index.php" class="button button-secondary">
+            Beranda
+        </a>
     </div>
 
-</div>
+</main>
 
 </body>
 </html>

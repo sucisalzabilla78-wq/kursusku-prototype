@@ -1,363 +1,218 @@
-<!DOCTYPE html>
+<?php
+
+declare(strict_types=1);
+?>
+<!doctype html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pendaftaran Kursus - KursusKu</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Daftar Kursus - KursusKu</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            font-family: Georgia, "Times New Roman", serif;
-            background: #ffffff;
-            color: #222;
-        }
-
-        .container {
-            width: 80%;
-            max-width: 800px;
-            margin: 30px auto;
-        }
-
-        .menu {
-            margin-bottom: 20px;
-        }
-
-        .menu a {
-            color: #0645ad;
-            text-decoration: underline;
-            margin-right: 5px;
-        }
-
-        .judul-kecil {
-            color: #b05a70;
-            font-weight: bold;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-        }
-
-        h1 {
-            font-size: 30px;
-            margin: 0 0 12px 0;
-        }
-
-        .deskripsi {
-            margin-bottom: 25px;
-        }
-
-        .form-box {
-            border: 1px solid #d5d5d5;
-            border-radius: 15px;
-            padding: 25px;
-        }
-
-        .row {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 18px;
-        }
-
-        .form-group {
-            flex: 1;
-        }
-
-        label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 7px;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        select,
-        textarea {
-            width: 100%;
-            padding: 11px 13px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: 14px;
-        }
-
-        input:focus,
-        select:focus,
-        textarea:focus {
-            outline: none;
-            border-color: #999;
-        }
-
-        .full-width {
-            margin-bottom: 18px;
-        }
-
-        fieldset {
-            border: 1px solid #ccc;
-            margin: 0 0 18px 0;
-            padding: 10px 15px 15px 15px;
-        }
-
-        legend {
-            font-weight: bold;
-            padding: 0 5px;
-        }
-
-        .radio-group,
-        .checkbox-group {
-            display: flex;
-            gap: 25px;
-        }
-
-        .radio-group label,
-        .checkbox-group label {
-            font-weight: normal;
-            display: inline;
-            margin-left: 3px;
-        }
-
-        textarea {
-            height: 100px;
-            resize: vertical;
-        }
-
-        .button {
-            margin-top: 5px;
-        }
-
-        button {
-            padding: 10px 25px;
-            border: none;
-            border-radius: 8px;
-            background: #b05a70;
-            color: white;
-            font-family: Georgia, "Times New Roman", serif;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #93485b;
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                width: 92%;
-            }
-
-            .row {
-                flex-direction: column;
-                gap: 0;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
-<body>
+<body class="utility-page">
 
-<div class="container">
+<main class="utility-card form-card">
 
-    <!-- Menu -->
-    <div class="menu">
-        <a href="index.php">KursusKu</a><br>
-        <a href="index.php">Beranda</a>
-        <a href="catalog.php">Katalog</a>
-        <a href="registration.php">Daftar</a>
-    </div>
+    <span class="eyebrow">MILESTONE 6 · FORM LANJUTAN</span>
 
-    <!-- Judul -->
-    <div class="judul-kecil">
-        PENDAFTARAN KURSUS
-    </div>
+    <h1>Daftar Kursus</h1>
 
-    <h1>Mulai belajar bersama KursusKu</h1>
-
-    <p class="deskripsi">
-        Gunakan data latihan. Field bertanda wajib harus diisi.
+    <p>
+        Alur: landing page → form → proses PHP → ringkasan.
+        Belum memakai database.
     </p>
 
-    <!-- Form -->
-    <form action="process-registration.php" method="POST">
+    <form action="process-registration.php" method="POST" class="stack-form">
 
-        <div class="form-box">
+        <input type="hidden" name="source" value="week-06">
 
-            <!-- Nama & Email -->
-            <div class="row">
+        <!-- Nama dan Email -->
+        <div class="form-grid">
 
-                <div class="form-group">
-                    <label for="nama">Nama Lengkap</label>
+            <div class="field">
+                <label for="name">Nama lengkap</label>
+
+                <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    minlength="3"
+                    maxlength="100"
+                    autocomplete="name"
+                    required
+                >
+            </div>
+
+            <div class="field">
+                <label for="email">Email</label>
+
+                <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    maxlength="120"
+                    autocomplete="email"
+                    required
+                >
+            </div>
+
+        </div>
+
+        <!-- Pilih Kursus -->
+        <div class="field">
+
+            <label for="course">Pilih kursus</label>
+
+            <select id="course" name="course" required>
+
+                <option value="">-- Pilih kursus --</option>
+
+                <option value="web-dasar">
+                    Web Dasar
+                </option>
+
+                <option value="php-dasar">
+                    PHP Dasar
+                </option>
+
+                <option value="laravel-fundamental">
+                    Laravel Fundamental
+                </option>
+
+            </select>
+
+        </div>
+
+        <!-- Tipe Peserta -->
+        <fieldset class="field">
+
+            <legend>Tipe peserta</legend>
+
+            <div class="choice-row">
+
+                <label>
                     <input
-                        type="text"
-                        id="nama"
-                        name="nama"
+                        type="radio"
+                        name="participant_type"
+                        value="mahasiswa"
                         required
                     >
-                </div>
+                    Mahasiswa
+                </label>
 
-                <div class="form-group">
-                    <label for="email">Email</label>
+                <label>
                     <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        required
+                        type="radio"
+                        name="participant_type"
+                        value="guru"
                     >
-                </div>
+                    Guru
+                </label>
 
-            </div>
-
-            <!-- Nomor HP & Program Studi -->
-            <div class="row">
-
-                <div class="form-group">
-                    <label for="no_hp">Nomor HP</label>
+                <label>
                     <input
-                        type="text"
-                        id="no_hp"
-                        name="no_hp"
-                        placeholder="Contoh: 081234567890"
-                        required
+                        type="radio"
+                        name="participant_type"
+                        value="umum"
                     >
-                </div>
+                    Umum
+                </label>
 
-                <div class="form-group">
-                    <label for="prodi">Program Studi</label>
+            </div>
+
+        </fieldset>
+
+        <!-- Minat Belajar -->
+        <fieldset class="field">
+
+            <legend>Minat belajar</legend>
+
+            <div class="choice-row">
+
+                <label>
                     <input
-                        type="text"
-                        id="prodi"
-                        name="prodi"
-                        required
+                        type="checkbox"
+                        name="interests[]"
+                        value="frontend"
                     >
-                </div>
+                    Frontend
+                </label>
+
+                <label>
+                    <input
+                        type="checkbox"
+                        name="interests[]"
+                        value="backend"
+                    >
+                    Backend
+                </label>
+
+                <label>
+                    <input
+                        type="checkbox"
+                        name="interests[]"
+                        value="database"
+                    >
+                    Database
+                </label>
+
+                <label>
+                    <input
+                        type="checkbox"
+                        name="interests[]"
+                        value="ui-ux"
+                    >
+                    UI/UX
+                </label>
 
             </div>
 
-            <!-- Kursus -->
-            <div class="full-width">
+        </fieldset>
 
-                <label for="kursus">Kursus yang Dipilih</label>
+        <!-- Catatan -->
+        <div class="field">
 
-                <select id="kursus" name="kursus" required>
+            <label for="note">Catatan</label>
 
-                    <option value="">
-                        -- Pilih kursus --
-                    </option>
+            <textarea
+                id="note"
+                name="note"
+                rows="5"
+                maxlength="300"
+                placeholder="Tuliskan kebutuhan belajar Anda (opsional)"
+            ></textarea>
 
-                    <option value="UI/UX">
-                        UI/UX
-                    </option>
+            <small class="table-note">
+                Maksimal 300 karakter.
+            </small>
 
-                    <option value="Database">
-                        Database
-                    </option>
+        </div>
 
-                    <option value="Backend">
-                        Backend
-                    </option>
+        <!-- Tombol -->
+        <div class="button-row">
 
-                </select>
+            <button
+                class="button"
+                type="submit"
+            >
+                Kirim Pendaftaran
+            </button>
 
-            </div>
-
-            <!-- Jenis Peserta -->
-            <fieldset>
-
-                <legend>Jenis Peserta</legend>
-
-                <div class="radio-group">
-
-                    <div>
-                        <input
-                            type="radio"
-                            id="mahasiswa"
-                            name="jenis_peserta"
-                            value="Mahasiswa"
-                            required
-                        >
-                        <label for="mahasiswa">Mahasiswa</label>
-                    </div>
-
-                    <div>
-                        <input
-                            type="radio"
-                            id="umum"
-                            name="jenis_peserta"
-                            value="Umum"
-                        >
-                        <label for="umum">Umum</label>
-                    </div>
-
-                </div>
-
-            </fieldset>
-
-            <!-- Minat Tambahan -->
-            <fieldset>
-
-                <legend>Minat Tambahan</legend>
-
-                <div class="checkbox-group">
-
-                    <div>
-                        <input
-                            type="checkbox"
-                            id="uiux"
-                            name="minat[]"
-                            value="UI/UX"
-                        >
-                        <label for="uiux">UI/UX</label>
-                    </div>
-
-                    <div>
-                        <input
-                            type="checkbox"
-                            id="database"
-                            name="minat[]"
-                            value="Database"
-                        >
-                        <label for="database">Database</label>
-                    </div>
-
-                    <div>
-                        <input
-                            type="checkbox"
-                            id="backend"
-                            name="minat[]"
-                            value="Backend"
-                        >
-                        <label for="backend">Backend</label>
-                    </div>
-
-                </div>
-
-            </fieldset>
-
-            <!-- Catatan -->
-            <div class="full-width">
-
-                <label for="catatan">Catatan</label>
-
-                <textarea
-                    id="catatan"
-                    name="catatan"
-                    placeholder="Tuliskan catatan jika ada..."
-                ></textarea>
-
-            </div>
-
-            <!-- Tombol -->
-            <div class="button">
-                <button type="submit">
-                    Daftar Kursus
-                </button>
-            </div>
+            <a
+                class="button button-secondary"
+                href="index.php"
+            >
+                Beranda
+            </a>
 
         </div>
 
     </form>
 
-</div>
+</main>
 
 </body>
 </html>
