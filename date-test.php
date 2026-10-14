@@ -1,11 +1,13 @@
-<?php
 
-$start = new DateTimeImmutable('2026-09-15');
+<?php
 
 $now = new DateTimeImmutable(
     'now',
     new DateTimeZone('Asia/Jakarta')
 );
+
+$start = $now;
+
 ?>
 
 <!doctype html>
