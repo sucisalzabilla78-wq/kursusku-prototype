@@ -1,3 +1,4 @@
+
 <?php
 date_default_timezone_set('Asia/Jakarta');
 require_once __DIR__ . '/data.php';
@@ -25,15 +26,16 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         }
     }
 
-    if (
-        $name === '' ||
-        !filter_var($email, FILTER_VALIDATE_EMAIL) ||
-        $selectedCourse === null
-    ) {
-        $error = 'Data tidak valid. Silakan kembali dan isi formulir dengan benar.';
-    } else {
-        $price = $selectedCourse['price'];
-    }
+  if (
+    $name === '' ||
+    !filter_var($email, FILTER_VALIDATE_EMAIL) ||
+    $selectedCourse === null
+) {
+    http_response_code(422);
+    $error = 'Data tidak valid. Silakan kembali dan isi formulir dengan benar.';
+} else {
+    $price = $selectedCourse['price'];
+}
 }
 ?>
 <!DOCTYPE html>
@@ -42,46 +44,89 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Process Pendaftaran - KursusKu</title>
+
 <style>
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
-    background: #fff0f6;
-    color: #4a2636;
+    background: #eaf7ee;
+    color: #1b4332;
     padding: 30px 15px;
+    margin: 0;
+    min-height: 100vh;
 }
+
 .container {
     max-width: 650px;
     margin: 40px auto;
     padding: 30px;
-    background: white;
-    border: 1px solid #f0b6d0;
+    background: #ffffff;
+    border: 1px solid #b7e4c7;
     border-radius: 16px;
-    box-shadow: 0 8px 25px #c13f7d18;
+    box-shadow: 0 8px 25px rgba(45, 106, 79, 0.12);
 }
-h1 { color: #a82e68; }
+
+h1 {
+    color: #2d6a4f;
+    margin-top: 0;
+}
+
 .result {
-    background: #fff0f6;
-    border-left: 4px solid #c13f7d;
+    background: #eaf7ee;
+    border-left: 4px solid #2d6a4f;
     padding: 15px;
     margin: 20px 0;
+    border-radius: 6px;
     overflow-wrap: anywhere;
+    line-height: 1.6;
 }
+
+.result p {
+    margin: 10px 0;
+}
+
 a {
     display: inline-block;
     margin: 8px 5px 0 0;
     padding: 12px 18px;
-    background: #c13f7d;
+    background: #2d6a4f;
     color: white;
     text-decoration: none;
     border-radius: 8px;
+    transition: background 0.2s;
 }
+
+a:hover {
+    background: #1b4332;
+}
+
 .secondary {
     background: white;
-    color: #a82e68;
-    border: 1px solid #c13f7d;
+    color: #2d6a4f;
+    border: 1px solid #2d6a4f;
+}
+
+.secondary:hover {
+    background: #d8f3dc;
+    color: #1b4332;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 22px;
+        margin: 20px auto;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
 }
 </style>
 </head>
+
 <body>
 <div class="container">
 <h1>Hasil Proses Pendaftaran</h1>
@@ -102,13 +147,15 @@ a {
 <?php else: ?>
 
     <p>Data pendaftaran berhasil diproses.</p>
+
     <div class="result">
         <p><strong>Nama:</strong> <?= e($name) ?></p>
         <p><strong>Email:</strong> <?= e($email) ?></p>
         <p><strong>Kursus:</strong> <?= e($selectedCourse['name']) ?></p>
         <p><strong>Harga:</strong> Rp<?= number_format($price, 0, ',', '.') ?></p>
-        <p><strong>Waktu server:</strong> <?= date('Y-m-d H:i:s') ?></p>
+        <p><strong>Waktu server:</strong> <?= date('Y-m-d H:i:s') ?> WIB</p>
     </div>
+
     <a href="register.php">Daftar Lagi</a>
     <a class="secondary" href="index.php">Beranda</a>
 

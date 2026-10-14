@@ -1,7 +1,6 @@
 <?php
 require_once __DIR__ . '/helpers.php';
 
-/** @var array $courses */
 $courses = [
     ['code' => 'WEB-01', 'name' => 'Web Dasar', 'fee' => 200000, 'quota' => 30, 'registered' => 12, 'start_date' => '2026-09-21'],
     ['code' => 'PHP-01', 'name' => 'PHP Dasar', 'fee' => 250000, 'quota' => 30, 'registered' => 18, 'start_date' => '2026-09-22'],
@@ -50,14 +49,14 @@ $tahun = date("Y");
     </div>
 
   </header>
-
-  <nav class="navbar">
+<nav class="navbar">
   <div class="container">
     <a href="index.php">Beranda</a>
     <a href="index.php#kursus">Katalog</a>
     <a href="registration.php">Daftar Kursus</a>
   </div>
 </nav>
+
   <main>
     <section id="beranda" class="hero">
 
@@ -84,7 +83,7 @@ $tahun = date("Y");
               Lihat Kursus
             </a>
 
-              <a
+            <a
                 href="fee-calculator.php"
                 class="button">Lihat Estimasi Biaya
               </a>
@@ -146,7 +145,55 @@ $tahun = date("Y");
 
     </section>
     <!-- ===== AKHIR SECTION KATALOG ===== -->
+     
+    <section id="kursus" class="section">
 
+      <div class="container">
+
+        <h2>Program Kursus</h2>
+
+        <div class="course-grid">
+
+          <article class="course-card">
+
+            <h3>HTML & CSS</h3>
+
+            <p>
+              Belajar membangun struktur dan
+              tampilan website dari dasar.
+            </p>
+
+          </article>
+
+
+          <article class="course-card">
+
+            <h3>PHP</h3>
+
+            <p>
+              Belajar pemrograman web
+              server-side menggunakan PHP.
+            </p>
+
+          </article>
+
+
+          <article class="course-card">
+
+            <h3>Laravel</h3>
+
+            <p>
+              Membangun aplikasi web modern
+              menggunakan framework Laravel.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
     <section id="tentang" class="section section-light">
 
       <div class="container">

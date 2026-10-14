@@ -1,3 +1,4 @@
+
 <?php
 date_default_timezone_set('Asia/Jakarta');
 $serverTime = date('Y-m-d H:i:s');
@@ -22,8 +23,8 @@ $serverTime = date('Y-m-d H:i:s');
             justify-content: center;
             align-items: center;
             font-family: Arial, sans-serif;
-            background: #fff0f6;
-            color: #4a2636;
+            background: #eaf7ee;
+            color: #1b4332;
             padding: 20px;
         }
 
@@ -33,20 +34,20 @@ $serverTime = date('Y-m-d H:i:s');
             background: #ffffff;
             padding: 45px 55px;
             border-radius: 18px;
-            box-shadow: 0 8px 25px rgba(193, 63, 125, 0.12);
-            border: 1px solid #f5c2d8;
+            box-shadow: 0 8px 25px rgba(45, 106, 79, 0.12);
+            border: 1px solid #b7e4c7;
         }
 
         h1 {
             font-size: 32px;
             margin-top: 0;
             margin-bottom: 35px;
-            color: #a82e68;
+            color: #2d6a4f;
         }
 
         .time-box {
-            background: #fff0f6;
-            border-left: 5px solid #c13f7d;
+            background: #eaf7ee;
+            border-left: 5px solid #2d6a4f;
             padding: 20px 25px;
             border-radius: 8px;
             font-size: 18px;
@@ -54,7 +55,7 @@ $serverTime = date('Y-m-d H:i:s');
         }
 
         .time {
-            color: #c13f7d;
+            color: #1b7a45;
             font-family: monospace;
             font-size: 21px;
             font-weight: bold;
@@ -63,14 +64,14 @@ $serverTime = date('Y-m-d H:i:s');
         .description {
             margin: 25px 10px;
             line-height: 1.8;
-            color: #795366;
+            color: #52796f;
         }
 
         .btn {
             display: inline-block;
             margin-top: 5px;
             padding: 14px 25px;
-            background: #c13f7d;
+            background: #2d6a4f;
             color: white;
             text-decoration: none;
             font-weight: bold;
@@ -79,7 +80,7 @@ $serverTime = date('Y-m-d H:i:s');
         }
 
         .btn:hover {
-            background: #a82e68;
+            background: #1b4332;
         }
 
         @media (max-width: 600px) {
@@ -111,7 +112,9 @@ $serverTime = date('Y-m-d H:i:s');
 
     <div class="time-box">
         Waktu server:
-        <span class="time"><?= htmlspecialchars($serverTime) ?></span>
+        <span class="time">
+            <?= htmlspecialchars($serverTime) ?> WIB
+        </span>
     </div>
 
     <p class="description">
